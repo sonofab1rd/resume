@@ -48,9 +48,14 @@ update msg model =
             ( { model | content = newContent }, Cmd.none )
 
 
+sections : List String
+sections =
+    [ "Experience", "Languages", "Frameworks/Libraries", "Database", "Software", "Extracurriculars", "Education" ]
+
+
 view : Model -> Html Msg
 view model =
     div []
         [ customNav
-        , Section.section "Experience"
+        , div [ id "sections" ] (List.map Section.section sections)
         ]

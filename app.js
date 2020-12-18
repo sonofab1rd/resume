@@ -5214,20 +5214,109 @@ var $author$project$Nav$customNav = A2(
 					$elm$html$Html$text('440-752-9928')
 				]))
 		]));
+var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
-var $author$project$Section$sectionText = function (description) {
-	return description;
+var $elm$html$Html$li = _VirtualDom_node('li');
+var $elm$html$Html$ul = _VirtualDom_node('ul');
+var $author$project$Section$ptext = function (sectionName) {
+	switch (sectionName) {
+		case 'Experience':
+			return A2(
+				$elm$html$Html$p,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('OpenPracticeSolutions | Stow, OH | Jun 2015 - Present')
+					]));
+		case 'Languages':
+			return A2(
+				$elm$html$Html$p,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Java, JavaScript, HTML, CSS, TypeScript')
+					]));
+		case 'Frameworks/Libraries':
+			return A2(
+				$elm$html$Html$p,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('React, Hapi HL7, OpenCSV, Univocity CSV, Lombok, Mapstruct, JQuery, JSch, Tailwind CSS')
+					]));
+		case 'Database':
+			return A2(
+				$elm$html$Html$p,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('MySQL')
+					]));
+		case 'Software':
+			return A2(
+				$elm$html$Html$p,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Git, Jira, Docker, Maven, NPM, Visidata')
+					]));
+		case 'Extracurriculars':
+			return A2(
+				$elm$html$Html$ul,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$li,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Avid Drummer and Vocalist')
+							])),
+						A2(
+						$elm$html$Html$li,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Regular performer with Thrive')
+							]))
+					]));
+		case 'Education':
+			return A2(
+				$elm$html$Html$p,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('KENT STATE UNIVERSITY | Kent, OH\nMaster of Science (M.S.) Digital Science (Dec 2015)\nTeaching Assistant | Applications Architecture Fall 2015\n\nUNIVERSITY OF TOLEDO\nToledo, OH\nBachelor of Arts (B.A.) Education (Dec 2001)\n')
+					]));
+		default:
+			return A2(
+				$elm$html$Html$p,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('test')
+					]));
+	}
 };
-var $author$project$Section$section = function (desciption) {
+var $author$project$Section$section = function (description) {
 	return A2(
-		$elm$html$Html$h1,
+		$elm$html$Html$div,
 		_List_Nil,
 		_List_fromArray(
 			[
-				$elm$html$Html$text(
-				$author$project$Section$sectionText(desciption))
+				A2(
+				$elm$html$Html$h1,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text(description)
+					])),
+				$author$project$Section$ptext(description)
 			]));
 };
+var $author$project$Resume$sections = _List_fromArray(
+	['Experience', 'Languages', 'Frameworks/Libraries', 'Database', 'Software', 'Extracurriculars', 'Education']);
 var $author$project$Resume$view = function (model) {
 	return A2(
 		$elm$html$Html$div,
@@ -5235,7 +5324,13 @@ var $author$project$Resume$view = function (model) {
 		_List_fromArray(
 			[
 				$author$project$Nav$customNav,
-				$author$project$Section$section('Experience')
+				A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$id('sections')
+					]),
+				A2($elm$core$List$map, $author$project$Section$section, $author$project$Resume$sections))
 			]));
 };
 var $author$project$Resume$main = $elm$browser$Browser$element(
